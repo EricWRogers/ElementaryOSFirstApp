@@ -9,16 +9,23 @@ int main (string[] args) {
     window.set_default_size (350, 70);
     window.destroy.connect (Gtk.main_quit);
     
-   /* var button_hello = new Gtk.Button.with_label ("Click me!");
-    button_hello.clicked.connect (() => {
-        button_hello.label = "Hello World!";
-        button_hello.set_sensitive (false);
-    });*/
+    var grid = new Gtk.Grid ();
+    grid.orientation = Gtk.Orientation.VERTICAL;
+    grid.row_spacing = 6;
+    //adding button
+    var button = new Gtk.Button.with_label ("Click me!");
+    var label = new Gtk.Label (null);
+    //button functionality
+    button.clicked.connect (() => {
+        label.label = _("Hello World!");
+        button.sensitive = false;
+    });
+    //adding stuff to the grid
+    grid.add (button);
+    grid.add (label);
     
-    var label = new Gtk.Label ("Hello Again World!");
-    
-    //window.add (button_hello);
-    window.add (label);
+    //add to window
+    window.add (grid);
     window.show_all ();
 
     Gtk.main ();
